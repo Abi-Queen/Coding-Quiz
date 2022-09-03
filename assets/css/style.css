@@ -5,22 +5,18 @@ body{
 	width:100vw;
 	height: 100vh;	
 }
-header {
+.header-container {
     padding: 30px 30px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
 	font-weight: bold;
+	justify-content: space-between;
 }
 #scores-list {
 	color: purple;
 }
+#timer {
+	align-content: flex-end;
+}
 .panel{
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }
 .question-container{
 	margin: 10px;
@@ -32,32 +28,20 @@ header {
 	text-align: center;
 	border: 1px solid black;
 }
-.result{
-	margin: 10px;
-	padding: 5px;
-	width:80vw;
-	height: 10vh;
-	text-align: center;
-	font-size: 50px;
-	
-}
-.option-container{
-	display: flex;
-    flex-direction: column;
+.options-container{
 	margin: 10px;
 	padding: 5px;
 	width: 80vw;
 	height: 40vh;
 	background-color: rgb(117, 71, 209);
-		
 }
-.option{	
+.option-text{	
 	padding: 10px;
 	font-size: 14px;
 	justify-content: space-around;
 	border-radius: 5%;
-	flex: 1;
 }
 .option:hover{
+	cursor: pointer;
 	background-color: rgba(167, 148, 205, 0.939);
 }

@@ -10,37 +10,26 @@
 </head>
 
 <body>
-	<header class="display-flex justify-content-around text-center mt-auto d-lg-block">
-		<div id="scores-list">
+	<header class="d-flex row header-container">
+		<div class="col" id="scores-list">
 			<p>View high scores</p>
 		</div>
-		<div id="timer">
+		<div class="col" id="timer">
 			<p>Time: </p>
 		</div>
 	</header>
-	<div class="panel row d-flex justify-content-center">
-		<div class="quiz">
-			<div class="question-container" id="question"></div>
-				<div class="option-container">
-					<p class="option-letter">A</p>
-					<p class="option-text" id="op1">Option 1</p>
-				</div>
-				<div class="option-container">
-					<p class="option-letter">B</p>
-					<p class="option-text" id="op1">Option 1</p>
-				</div>
-				<div class="option-container">
-					<p class="option-letter">C</p>
-					<p class="option-text" id="op1">Option 1</p>
-				</div>
-				<div class="option-container">
-					<p class="option-letter">D</p>
-					<p class="option-text" id="op1">Option 1</p>
-				</div>
+	<div class="panel d-flex justify-content-center">
+		<div class="quiz d-flex justify-content-center row">
+			<div class="question-container flex-1" id="question">Question</div>
+			<div class="options-container flex-2">
+				<p class="option-text" id="op1">Option 1</p>
+				<p class="option-text" id="op2">Option 2</p>
+				<p class="option-text" id="op3">Option 3</p>
+				<p class="option-text" id="op4">Option 4</p>
 			</div>
 		</div>
 	</div>
 
-	<script src="./assets/js/script.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
