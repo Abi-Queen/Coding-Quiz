@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coding Quiz</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-  <header>
-    <p class="header">View high scores</p>
-    <p class="timer">Time: </p>
-  </header>
-  <div class="container">
-  </div>
-  <script src="./assets/js/script.js"></script>
-</body>
+	<header class="display-flex justify-content-around text-center mt-auto d-lg-block">
+		<div id="scores-list">
+			<p>View high scores</p>
+		</div>
+		<div id="timer">
+			<p>Time: </p>
+		</div>
+	</header>
+	<div class="panel row d-flex justify-content-center">
+		<div class="quiz">
+			<div class="question-container" id="question"></div>
+				<div class="option-container">
+					<p class="option-letter">A</p>
+					<p class="option-text" id="op1">Option 1</p>
+				</div>
+				<div class="option-container">
+					<p class="option-letter">B</p>
+					<p class="option-text" id="op1">Option 1</p>
+				</div>
+				<div class="option-container">
+					<p class="option-letter">C</p>
+					<p class="option-text" id="op1">Option 1</p>
+				</div>
+				<div class="option-container">
+					<p class="option-letter">D</p>
+					<p class="option-text" id="op1">Option 1</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<script src="./assets/js/script.js"></script>
+</body>
 </html>
