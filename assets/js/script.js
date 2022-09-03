@@ -10,6 +10,9 @@ let questionCounter = 0;
 let availableQuestions = [];
 
 
+const correctScore = 1;
+const maxQuestions = 5;
+
 //create an array of questions and answers
 var questions = [
     {
@@ -54,16 +57,31 @@ var questions = [
 }
 ]
 
-// Quiz function
-document.form_main.start-btn.onclick = function()
-    {for(vari=0; i<Questions.length; 1++) {
-    quiz(Questions[i]);
-    };
-//end if Questions.length-1
+// Quiz functionality 1: start, get and display questions and answers
+startQuiz = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
+    getNewQuestion();
+}
+
+getNewQuestion = () => {
+    questionCounter++; 
+    const questionIndex = Math.floor(Math.random() + availableQuestions.length);
+    currentQuestion = availableQuestions[questionIndex];
+    question.innerText = currentQuestion.question;
+
+    options.forEach(option => {
+        const number = option.dataset["number"];
+        option.innerText = currentQuestion["option" + number];
+    });
 };
 
-// End quiz
-query-enterinitdiv
+startQuiz();
+
+//Quiz functionality 2: end, record score to localstorage, stop timer
+
+
 
 
 
