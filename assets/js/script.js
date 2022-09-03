@@ -1,55 +1,56 @@
+//create global variables
+const question = document.getElementById("question");
+const options = document.getElementsByClassName("option-text");
+const choices = Array.from(document.getElementsByClassName("option-text"));
+
+let currentQuestion = {};
+let acceptingAnswers = true;
+let score = 0;
+let questionCounter = 0; 
+let availableQuestions = [];
+
+
 //create an array of questions and answers
-var Questions = [{
-    id: 0,
-    q: "Where is the correct place to insert a JavaScript?",
-    a: [{ text: "The <head> section", isCorrect: false },
-        { text: "Both the <head> section and the <body> section", isCorrect: false },
-        { text: "The beginning of the <body> section", isCorrect: false },
-        { text: "The end of the <body> section", isCorrect: true }
-    ]
+var questions = [
+    {
+    question: "Where is the correct place to insert a JavaScript?",
+    option1: "The <head> section",
+    option2: "Both the <head> section and the <body> section",
+    option3: "The beginning of the <body> section",
+    option4: "The end of the <body> section",
+    answer: 4
 },
 {
-    id: 1,
-    q: "What is the correct syntax for referring to an external script called 'file.js'?",
-    a: [{ text: "<script href='file.js'>", isCorrect: false, isSelected: false },
-        { text: "<script name='file.js'>", isCorrect: false },
-        { text: "<script src='file.js'>", isCorrect: true },
-        { text: "<script al='file.js'>", isCorrect: false }
-    ]
-
+    question: "What is the correct syntax for referring to an external script called 'file.js'?",
+    option1: "<script href='file.js'>",
+    option2: "<script name='file.js'>",
+    option3: "<script src='file.js'>",
+    option4: "<script al='file.js'>",
+    answer: 3
 },
 {
-    id: 2,
-    q: "How do you write 'Hello World' in an alert box?",
-    a: [{ text: "alert('Hello World')", isCorrect: true },
-        { text: "alertBox('Hello World')", isCorrect: false },
-        { text: "msg('Hello World')", isCorrect: false },
-        { text: "msgBox('Hello World')", isCorrect: false }
-    ]
-
+    question: "How do you write 'Hello World' in an alert box?",
+    option1: "alert('Hello World')",
+    option2: "alertBox('Hello World')",
+    option3: "msg('Hello World')",
+    option4: "msgBox('Hello World')",
+    answer: 1
 },
 {
-    id: 3,
-    q: "How many columns are in Bootstrap?",
-    a: [{ text: "unlimited", isCorrect: false },
-        { text: "12", isCorrect: true},
-        { text: "1", isCorrect: false},
-        { text: "6", isCorrect: false}
-    ]
+    question: "How many columns are in a Bootstrap row?",
+    option1: "unlimited",
+    option2: "12",
+    option3: "1",
+    option4: "5",
+    answer: 2
 },
 {
-    id: 4,
-    q: "Which of the following is a Third-Party API?",
-    a: [{ text: "DOM", isCorrect: false },
-        { text: "Flexbox", isCorrect: false },
-        { text: "JavaScript", isCorrect: false},
-        { text: "jQuery", isCorrect: true}
-    ]
-},
-{
-    id: 5,
-    q: "Your score is . Enter your initials to save your score: ",
-    a: [{text: "Save", isCorrect: true }]
+    question: "Which of the following is a Third-Party API?",
+    option1: "DOM",
+    option2: "Flexbox",
+    option3: "JavaScript",
+    option4: "jQuery",
+    answer: 4
 }
 ]
 
