@@ -1,13 +1,11 @@
 //create global variables
 const question = document.getElementById("question");
-const options = document.getElementsByClassName("option-text");
-const choices = Array.from(document.getElementsByClassName("option-text"));
+const options = Array.from(document.getElementsByClassName("option-text"));
 
 let currentQuestion = {};
 let score = 0;
 let questionCounter = 0; 
 let availableQuestions = [];
-
 
 const correctScore = 1;
 const maxQuestions = 5;
@@ -86,9 +84,8 @@ getNewQuestion = () => {
         option.innerText = currentQuestion["option" + number];
     });
 
-    //omit question we just used
+    //omit question we just used from current array
     availableQuestions.splice(questionIndex, 1);
-
 };
 
 //check answers to see if they are correct by inspecting element of clicked option
