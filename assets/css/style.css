@@ -17,6 +17,7 @@ body{
 	align-content: flex-end;
 }
 .panel{
+	padding: 2rem; 
 }
 .question-container{
 	margin: 10px;
