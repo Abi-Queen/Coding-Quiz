@@ -1,13 +1,13 @@
 //create global variables
-const question = document.getElementById("question");
-const options = Array.from(document.getElementsByClassName("option-text"));
+const question = document.getElementById('display-question');
+const options = Array.from(document.getElementsByClassName('option-text'));
 
 let currentQuestion = {};
 let score = 0;
 let questionCounter = 0; 
 let availableQuestions = [];
 
-const correctScore = 1;
+const correctPoints = 1;
 const maxQuestions = 5;
 
 var timer = setTimeout(timer, 1000)
@@ -64,7 +64,6 @@ startQuiz = () => {
     score = 0;
     availableQuestions = [...questions];
     getNewQuestion();
-
 }
 
 getNewQuestion = () => {
@@ -75,13 +74,13 @@ getNewQuestion = () => {
     }
 
     questionCounter++; 
-    const questionIndex = Math.floor(Math.random() + availableQuestions.length);
+    var questionIndex = Math.floor(Math.random() + availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
 
     options.forEach(option => {
-        const number = option.dataset["number"];
-        option.innerText = currentQuestion["option" + number];
+        const number = option.dataset['number'];
+        option.innerText = currentQuestion['option' + number];
     });
 
     //omit question we just used from current array
@@ -92,12 +91,33 @@ getNewQuestion = () => {
 options.forEach(option => {
     option.addEventListener('click', e => {
         const selectedOption = e.target;
-        const selectedAnswer = selectedOption.dataset["number"];
+        const selectedAnswer = selectedOption.dataset['number'];
+
+        const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+
+        //add points to score for correct answer
+        if (classToApply === "correct") {
+            incrementScore(correctPoints);
+        }
+
+    selectedOption.parentElement.classList.add(classToApply);
+    
+    setTimeout( () => {
+        selectedOption.parentElement.classList.remove(classToApply);
         getNewQuestion();
+    }, 1000);
     });
 });
 
+//keep score
+incrementScore = num => {
+    score +=num;
+    scoreText.innerText = score;
+};
+
+
 startQuiz();
+
 
 //timer start
 function timerStart() {
