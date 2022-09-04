@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
+    <title>End</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -20,19 +20,14 @@
 	</header>
 	<div class="panel d-flex justify-content-center">
 		<div class="quiz d-flex justify-content-center row" id="quiz">
-			<h2 class="flex-1">All done!</h2>
-			<div class="flex col-2">
-				<p class="flex" id="display-score"></p>
-                <form class="flex">
-                    <label for="initials">Enter initials:</label>
-                    <input type="text" placeholder="" id="initials" name="initials" class="initials-input"/>
-                    <button type="submit">
-                      Get running!
-                    </button>
-                  </form>
-			</div>
+			<h2>All done!</h2>
+			<p id="display-score"></p>
+            <form class="flex">
+                <label for="initials">Enter initials:</label>
+                <input type="text" placeholder="" id="initials" name="initials" class="initials-input"/>
+            </form>
 		</div>
-        <button class="btn startBtn col-md-1"></button>
+        <button class="btn submitBtn col-md-1">Submit</button>
 	</div>
 
 <script src="./assets/js/script.js"></script>

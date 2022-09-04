@@ -4,28 +4,24 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
+    <title>Scores</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-	<header class="d-flex row header-container">
-		<div class="col" id="scores-list">
-			<p>View high scores</p>
-		</div>
-		<div class="col" id="timer">
-			<p>Time: </p>
-		</div>
-	</header>
 	<div class="panel d-flex justify-content-center">
-		<div class="quiz d-flex justify-content-center row" id="quiz">
-			<h2 class="flex-1">Coding Quiz Challenge</h2>
-			<div class="flex-2 instructions">
-				<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-			</div>
+		<div class="d-flex justify-content-center row" id="scores">
+			<h2>High scores</h2>
+			<!-- table displaying high scores ordered list -->
+            <div class="table" id="scores-table">
+                <ol id="high-scores"></ol>
+            </div>
+            <div class="flex col-2 buttons">
+                <button class="btn backBtn col-md-1">Go back</button>
+                <button class="btn clearBtn col-md-1">Clear high scores</button>
+            </div>
 		</div>
-        <button class="btn startBtn col-md-1"></button>
 	</div>
 
 <script src="./assets/js/script.js"></script>
