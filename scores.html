@@ -10,18 +10,18 @@
 </head>
 
 <body>
-	<div class="panel d-flex justify-content-center">
-		<div class="d-flex justify-content-center row" id="scores">
-			<h2>High scores</h2>
-			<!-- table displaying high scores ordered list -->
-            <div class="table" id="scores-table">
-                <ol id="high-scores"></ol>
-            </div>
-            <div class="flex col-2 buttons">
-                <button class="btn backBtn col-md-1">Go back</button>
-                <button class="btn clearBtn col-md-1">Clear high scores</button>
-            </div>
-		</div>
+	<div class="container scores-panel">
+		<h2 class="row">High scores</h2>
+		<!-- table displaying high scores ordered list -->
+        <div class="row table" id="scores-table">
+            <ol id="high-scores"></ol>
+        </div>
+        <div class="row">
+            <button class="col btn backBtn">
+                <a href="./start.html">Go back</a>
+            </button>
+            <button class="col btn clearBtn">Clear high scores</button>
+        </div>
 	</div>
 
 <script src="./assets/js/script.js"></script>

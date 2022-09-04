@@ -10,24 +10,28 @@
 </head>
 
 <body>
-	<header class="d-flex row header-container">
-		<div class="col" id="scores-list">
-			<p>View high scores</p>
-		</div>
-		<div class="col" id="timer">
-			<p>Time: </p>
-		</div>
+    <header class="container header-container">
+		<div class="row">
+            <div class = "col" id="scores-list">
+			    <a href="./scores.html">View high scores</a>
+		    </div>
+		    <div class="col" id="display-timer">
+			    <p>Time: </p>
+		    </div>
+        </div>
 	</header>
-	<div class="panel d-flex justify-content-center">
-		<div class="quiz d-flex justify-content-center row" id="quiz">
-			<h2>All done!</h2>
-			<p id="display-score"></p>
-            <form class="flex">
-                <label for="initials">Enter initials:</label>
-                <input type="text" placeholder="" id="initials" name="initials" class="initials-input"/>
-            </form>
+	<div class="container">
+		<div class="row end-panel">
+			<h2 class="row">All done!</h2>
+			<p class="row" id="display-score"></p>
+            <div class="row">
+                <form class="col">
+                    <label for="initials">Enter initials:</label>
+                    <input type="text" placeholder="" id="initials" name="initials" class="initials-input"/>
+                </form>
+                <button class="col btn submitBtn">Submit</button>
+            </div>
 		</div>
-        <button class="btn submitBtn col-md-1">Submit</button>
 	</div>
 
 <script src="./assets/js/script.js"></script>
