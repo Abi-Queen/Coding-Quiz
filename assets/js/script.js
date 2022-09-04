@@ -124,7 +124,7 @@ function timerStart() {
     time = setInterval(() => {timer(); }, 1000);
 }
 
-options.onclick = timerStart();
+document.getElementbyId('#start-quiz-btn').onclick = timerStart();
 
 //timer reset
 function timerReset() {
