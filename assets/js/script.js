@@ -1,7 +1,7 @@
 //create global variables
 const question = document.getElementById('display-question');
 const options = Array.from(document.getElementsByClassName('option-text'));
-
+ 
 let currentQuestion = {};
 let score = 0;
 let questionCounter = 0; 
@@ -57,57 +57,80 @@ var questions = [
     answer: 4
 }
 ]
-
+ 
 // Quiz functionality 1: start, get and display questions and answers
 startQuiz = () => {
     questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questions];
-    getNewQuestion();
+    var question = getNewQuestion(questions,0);
+    viewQuestion(question);
 }
 
-getNewQuestion = () => {
+viewQuestion = (question) => {
+    document.getElementById('display-question').innerText = question.question
+    document.querySelector(".option-container:nth-child(1)").innerText = question.option1
+    document.querySelector(".option-container:nth-child(2)").innerText = question.option2
+    document.querySelector(".option-container:nth-child(3)").innerText = question.option3
+    document.querySelector(".option-container:nth-child(4)").innerText = question.option4
+    // answer: 4
+    // option1: "The <head> section"
+    // option2: "Both the <head> section and the <body> section"
+    // option3: "The beginning of the <body> section"
+    // option4: "The end of the <body> section"
+    // question: "Where is the correct place to insert a JavaScript?"
+    // div:nth-child(2)
+}
 
-    if(availableQuestions.length === 0 || questionCounter > maxQuestions){
-        // display end page
-        return window.location.assign("/end.html"); 
-    }
+getNewQuestion = (questions, position) => {
+    var question = questions[position]
+    return question;
+//     console.log(availableQuestions)
+//     if(availableQuestions.length === 0 || questionCounter > maxQuestions){
+//         // display end page
+//         //return window.location.assign("/end.html"); 
+//     }
+//     questionCounter++; 
+//     var questionIndex = Math.floor(Math.random() + availableQuestions.length);
+//     currentQuestion = availableQuestions[questionIndex];
+//     question.innerText = currentQuestion.question;
 
-    questionCounter++; 
-    var questionIndex = Math.floor(Math.random() + availableQuestions.length);
-    currentQuestion = availableQuestions[questionIndex];
-    question.innerText = currentQuestion.question;
-
-    options.forEach(option => {
-        const number = option.dataset['number'];
-        option.innerText = currentQuestion['option' + number];
-    });
-
-    //omit question we just used from current array
-    availableQuestions.splice(questionIndex, 1);
+//     options.forEach(option => {
+//         const number = option.dataset['number'];
+//         option.innerText = currentQuestion['option' + number];
+//     });
+//     //omit question we just used from current array
+//     availableQuestions.splice(questionIndex, 1);
 };
 
 //check answers to see if they are correct by inspecting element of clicked option
-options.forEach(option => {
-    option.addEventListener('click', e => {
-        const selectedOption = e.target;
-        const selectedAnswer = selectedOption.dataset['number'];
+// options.forEach(option => {
+//     option.addEventListener('click', e => {
+//         const selectedOption = e.target;
+//         const selectedAnswer = selectedOption.dataset['number'];
 
-        const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+//         const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
-        //add points to score for correct answer
-        if (classToApply === "correct") {
-            incrementScore(correctPoints);
-        }
+//         //add points to score for correct answer
+//         if (classToApply === "correct") {
+//             incrementScore(correctPoints);
+//         }
 
-    selectedOption.parentElement.classList.add(classToApply);
+//     selectedOption.parentElement.classList.add(classToApply);
 
-    setTimeout( () => {
-        selectedOption.parentElement.classList.remove(classToApply);
-        getNewQuestion();
-    }, 1000);
-    });
-});
+//     setTimeout( () => {
+//         selectedOption.parentElement.classList.remove(classToApply);
+//         getNewQuestion();
+//     }, 1000);
+//     });
+// });
+
+document.querySelector(".options-container").onclick = (event) => {
+    var clickedElement = event.target;
+    if(clickedElement.matches('.option-container') && clickedElement.getAttribute("data-option")=="4")
+    /** TODO. Change "1" to question.answer */
+        alert("Correct!")
+    else
+        alert("Incorrect!")
+}
 
 //keep score
 incrementScore = num => {
