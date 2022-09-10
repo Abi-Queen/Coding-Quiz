@@ -10,22 +10,22 @@
 </head>
 
 <body>
-	<header class="container header-container">
+	<header class="d-flex justify-content-between container">
 		<div class="row">
-            <div class = "col" id="scores-list">
-			    <a href="./scores.html">View high scores</a>
-		    </div>
-		    <div class="col" id="display-timer">
-			    <p>Time: </p>
-		    </div>
-        </div>
+			<div class="col" id="scores-list">
+				<a href="./scores.html">View high scores</a>
+			</div>
+			<div class="col" id="timer">
+				<p>Time: <span id="minute">00</span>:<span id="second">00</span></p>
+			</div>
+		</div>
 	</header>
 	<div class="container start-panel">
 		<h2 class="row">Coding Quiz Challenge</h2>
-		<div class="row instructions">
+		<div class="row">
 			<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
 		</div>
-        <button class="row btn startBtn" id="start-quiz-btn">
+        <button class="row btn startBtn" id="start-btn">
             <a href="./index.html">Start Quiz</a>
         </button>
 	</div>
