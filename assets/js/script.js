@@ -52,6 +52,15 @@ var questions = [{
 
 // Quiz functionality 1: start
 //startbtn startQuiz
+$('#start-btn').on("click", function(){
+    startQuiz = () => {
+        questionCounter = 0;
+        var question = getNewQuestion(questions, 0); 
+        displayQuestion = (question) => {
+        $('#question').innerText=question.text
+    };
+};
+
 $(".startBtn").on("click", function(){
     startQuiz = () => {
         questionCounter = 0;
