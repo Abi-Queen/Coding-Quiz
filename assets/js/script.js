@@ -3,10 +3,10 @@
 var questions = [{
     id: 0,
     qu: "Where is the correct place to insert a JavaScript?",
-    op: [{ text: "The <head> section", isCorrect: false },
-        { text: "Both the <head> section and the <body> section", isCorrect: false },
-        { text: "The beginning of the <body> section", isCorrect: false },
-        { text: "The end of the <body> section", isCorrect: true }
+    op: [{ text: "The <head> section", key: false },
+        { text: "Both the <head> section and the <body> section", key: false },
+        { text: "The beginning of the <body> section", key: false },
+        { text: "The end of the <body> section", key: true }
     ]
 
 },
@@ -49,25 +49,3 @@ var questions = [{
     ]
 }
 ]
-
-// Quiz functionality 1: start
-//startbtn startQuiz
-$('#start-btn').on("click", function(){
-    startQuiz = () => {
-        questionCounter = 0;
-        var question = getNewQuestion(questions, 0); 
-        displayQuestion = (question) => {
-        $('#question').innerText=question.text
-    };
-};
-
-$(".startBtn").on("click", function(){
-    startQuiz = () => {
-        questionCounter = 0;
-        var question = getNewQuestion(questions,0);
-
-        // Quiz functionality 2: display questions and options
-        displayQuestion = (question) => {
-        $('#question').innerText=question.text
-    
-    
