@@ -1,71 +1,66 @@
-//create global variables
-const question = document.getElementById('display-question');
-const options = Array.from(document.getElementsByClassName('option-text'));
- 
-let currentQuestion = {};
-let score = 0;
-let questionCounter = 0; 
-let availableQuestions = [];
 
-const correctPoints = 1;
-const maxQuestions = 5;
+//Create an array of questions and answers
+var questions = [{
+    id: 0,
+    qu: "Where is the correct place to insert a JavaScript?",
+    op: [{ text: "The <head> section", isCorrect: false },
+        { text: "Both the <head> section and the <body> section", isCorrect: false },
+        { text: "The beginning of the <body> section", isCorrect: false },
+        { text: "The end of the <body> section", isCorrect: true }
+    ]
 
-var timer = setTimeout(timer, 1000)
-var minute = 0;
-var second = 0;
+},
+{
+    id: 1,
+    q: "What is the correct syntax for referring to an external script called 'file.js'?",
+    a: [{ text: "<script href='file.js'>", key: false },
+        { text: "<script name='file.js'>", key: false },
+        { text: "<script src='file.js'>", key: true },
+        { text: "<script al='file.js'>", key: false }
+    ]
 
-//create an array of questions and answers
-var questions = [
-    {
-    question: "Where is the correct place to insert a JavaScript?",
-    option1: "The <head> section",
-    option2: "Both the <head> section and the <body> section",
-    option3: "The beginning of the <body> section",
-    option4: "The end of the <body> section",
-    answer: 4
 },
 {
-    question: "What is the correct syntax for referring to an external script called 'file.js'?",
-    option1: "<script href='file.js'>",
-    option2: "<script name='file.js'>",
-    option3: "<script src='file.js'>",
-    option4: "<script al='file.js'>",
-    answer: 3
+    id: 2,
+    q: "How do you write 'Hello World' in an alert box?",
+    a: [{ text: "alert('Hello World')", key: true },
+        { text: "alertBox('Hello World')", key: false },
+        { text: "msg('Hello World')", key: false },
+        { text: "msgBox('Hello World')", key: false }
+    ]
+
 },
 {
-    question: "How do you write 'Hello World' in an alert box?",
-    option1: "alert('Hello World')",
-    option2: "alertBox('Hello World')",
-    option3: "msg('Hello World')",
-    option4: "msgBox('Hello World')",
-    answer: 1
+    id: 3,
+    q: "How many columns are in a Bootstrap grid row?",
+    a: [{ text: "unlimited", key: false },
+        { text: "12", key: true},
+        { text: "1", key: false},
+        { text: "6", key: false}
+    ]
 },
 {
-    question: "How many columns are in a Bootstrap row?",
-    option1: "unlimited",
-    option2: "12",
-    option3: "1",
-    option4: "5",
-    answer: 2
-},
-{
-    question: "Which of the following is a Third-Party API?",
-    option1: "DOM",
-    option2: "Flexbox",
-    option3: "JavaScript",
-    option4: "jQuery",
-    answer: 4
+    id: 4,
+    q: "Which of the following is a Third-Party API?",
+    a: [{ text: "DOM", key: false },
+        { text: "JSTOR", key: false },
+        { text: "JavaScript", key: false},
+        { text: "jQuery", key: true}
+    ]
 }
 ]
- 
-// Quiz functionality 1: start, get and display questions and answers
+
+// Quiz functionality 1: start
+//startbtn startQuiz
 startQuiz = () => {
     questionCounter = 0;
     var question = getNewQuestion(questions,0);
-    viewQuestion(question);
+    displayQuestion(question);
 }
 
-viewQuestion = (question) => {
+// Quiz functionality 2: display questions and options
+displayQuestion = (question) => {
+    $('#question').innerText=question.text
     document.getElementById('display-question').innerText = question.question
     document.querySelector(".option-container:nth-child(1)").innerText = question.option1
     document.querySelector(".option-container:nth-child(2)").innerText = question.option2
