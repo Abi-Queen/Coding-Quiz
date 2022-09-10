@@ -21,36 +21,18 @@ header {
 #start-btn:hover { 
 	font-weight: bold;
 }
-.questions{
-	margin: 10px;
-	padding: 5px;
-	width: 80vw;
-	height: 10vh;
-	background-color: rgb(175, 159, 208);
-	font-size: x-large;
-	text-align: center;
-	border: 1px solid black;
-}
-.result{
-	margin: 10px;
-	padding: 5px;
-	width:80vw;
-	height: 10vh;
-	text-align: center;
-	font-size: 50px;
-	
-}
 .options{
-	margin: 10px;
-	padding: 5px;
+	margin: 25px;
+	padding: 25px;
 	width: 80vw;
 	height: 40vh;
 	background-color: rgb(175, 159, 208);
-		
+	justify-content: center;
 }
 .option{	
 	padding: 10px;
 	font-size: 14px;
+	border-radius: 15%;
 }
 .option:hover{
 	background-color: rgb(245, 245, 221);
