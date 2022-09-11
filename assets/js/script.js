@@ -52,35 +52,48 @@ var questions = [{
 }
 ];
 
-// Function to iterate through questions
+//Function to iterate through questions, on startBtn, display question in html by id
+$('#start-btn').on("click", function(){
+    startQuiz = () => {
+        var question = questions.forEach(displayQuestion(questions, 0))
+        var displayQuestion = $('#question').innerText=question.text
+    };
+});
 
-// Display question in html by ID
 
 //Display options 1-4 in html by ID
 
-//Start button: startQuiz
 
-// Start button: startTimer
+//Timer function: start on start-btn, countdown, display in header
+var counter = 10000;
+var countdown = function() {
+    if(counter === 0) {
+        clearInterval(startCountdown);
+    };
+};
+var startCountdown = setInterval(countdown, 1000);
+$('#start-btn').onclick = startCountdown; 
 
-//Timer function: start time, countdown, display in header
+$('#minute').innerText = returnData(minute);
+$('#second').innerText = returnData(second);
 
 //Timer function: end when last question answered
 
 //Score: get timer value at last question answered
+var savedScore = 
 
 //Save score: display score in 'end' html by ID
+$('#display-score').innerText = savedScore; 
 
-//Accept user input for initials
-$(document).ready(function () {
-    $('#initials').click(function () {
-        var initials = $('input[name=initials]').val(); //sets var as form input
-        $('#initialsSaved').innerText = initials //sets initials entered in score page
-        $('input[name=initials]').val(''); //re-sets form on end page to empty string
-    });
-
-//Display initials and score in ordered list in 'scores' html by ID
+//Accept user input for initials, display with score in ol in 'scores' html by id
+$('#initials').click(function () {
+    var initials = $('input[name=initials]').val(); //sets var as form input
+    $('#initialsSaved').innerText = initials; //sets initials entered in score page
+    $('input[name=initials]').val(''); //re-sets form on end page to empty string
+});
 
 //Save score and initials to local storage
+localStorage.setItem("initials", savedScore)
 
 //If clicked option has value "true", display new question
 
