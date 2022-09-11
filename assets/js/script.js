@@ -1,5 +1,7 @@
+// Global variables
 
-//Create an array of questions and answers
+
+//Create an array of questions and options
 var questions = [{
     id: 0,
     qu: "Where is the correct place to insert a JavaScript?",
@@ -48,4 +50,38 @@ var questions = [{
         { text: "jQuery", key: true}
     ]
 }
-]
+];
+
+// Function to iterate through questions
+
+// Display question in html by ID
+
+//Display options 1-4 in html by ID
+
+//Start button: startQuiz
+
+// Start button: startTimer
+
+//Timer function: start time, countdown, display in header
+
+//Timer function: end when last question answered
+
+//Score: get timer value at last question answered
+
+//Save score: display score in 'end' html by ID
+
+//Accept user input for initials
+$(document).ready(function () {
+    $('#initials').click(function () {
+        var initials = $('input[name=initials]').val(); //sets var as form input
+        $('#initialsSaved').innerText = initials //sets initials entered in score page
+        $('input[name=initials]').val(''); //re-sets form on end page to empty string
+    });
+
+//Display initials and score in ordered list in 'scores' html by ID
+
+//Save score and initials to local storage
+
+//If clicked option has value "true", display new question
+
+//If clicked option has value "false", deduct 10 seconds from timer
