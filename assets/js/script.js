@@ -49,6 +49,69 @@ var questions = [{
         { text: "JavaScript", key: false},
         { text: "jQuery", key: true}
     ]
+},
+{
+    id: 5,
+    q: "To save array items to local storage, use:",
+    a: [{ text: "setInterval", key: false },
+        { text: "Bootstrap", key: false },
+        { text: "JSON.stringify", key: true},
+        { text: "getElementById", key: false}
+    ]
+}
+{
+    id: 6,
+    q: "Which of the following is function-scoped, NOT block-scoped?",
+    a: [{ text: "var", key: true },
+        { text: "const", key: false },
+        { text: "let", key: false},
+        { text: ".forEach", key: false}
+    ]
+},
+{
+    id: 7,
+    q: "Which of the following locks a variable's definition so that it can't change over tiem?",
+    a: [{ text: "let and var", key: false },
+        { text: "val", key: false },
+        { text: "arrow functions", key: false},
+        { text: "const", key: true}
+    ]
+},
+{
+    id: 8,
+    q: "=> replaces",
+    a: [{ text: "DOM", key: false },
+        { text: "function", key: true },
+        { text: "HTML tags", key: false},
+        { text: "const", key: false}
+    ]
+},
+{
+    id: 9,
+    q: "Which CSS attribute can be used to created rounded corners?",
+    a: [{ text: "border-radius", key: true },
+        { text: "radius", key: false },
+        { text: "gradient", key: false},
+        { text: "d-flex", key: false}
+    ]
+},
+{
+    id: 10,
+    q: ".slice()",
+    a: [{ text: "changes the original array", key: false },
+        { text: "leaves the original array intact", key: true },
+        { text: "includes all indices", key: false},
+        { text: "captures 0 index", key: true}
+    ]
+},
+{
+    id: 11,
+    q: "Global variables:",
+    a: [{ text: "cannot be ready by Node.js", key: false },
+        { text: "are declared inside a code block", key: false },
+        { text: "belong to the page", key: true},
+        { text: "cannot contain string", key: false}
+    ]
 }
 ];
 
@@ -59,6 +122,9 @@ $('#start-btn').on("click", function(){
         var displayQuestion = $('#question').innerText=question.text
     };
 });
+
+//add question counter
+var questionCounter = function(
 
 
 //Display options 1-4 in html by ID
