@@ -64,23 +64,58 @@ $('#start-btn').on("click", function(){
 //Display options 1-4 in html by ID
 
 
-//Timer function: start on start-btn, countdown, display in header
-var counter = 10000;
-var countdown = function() {
-    if(counter === 0) {
-        clearInterval(startCountdown);
-    };
+//Timer function: start on start-btn, display in header, end when 10th question answered, save to localStorage
+let hour = 0;
+let minute = 0;
+let second = 0;
+
+let cron;
+
+$('#start-btn').onclick = () => startTimer();
+
+//save timer to localStorage when question counter = 10, save timer to localStorage, then reset
+$('#questioncounter=0') = () => pause();
+var savedScore = localStorage.setItem("timer at 10th question")
+
+$('#submit-btn').onclick = () => reset();
+
+function startTimer() {
+    pause();
+    cron = setInterval(() => {timer(); }, 1000);
 };
-var startCountdown = setInterval(countdown, 1000);
-$('#start-btn').onclick = startCountdown; 
 
-$('#minute').innerText = returnData(minute);
-$('#second').innerText = returnData(second);
+function pause() {
+    clearInterval(cron);
+};
 
-//Timer function: end when last question answered
+function reset() {
+    hour = 0;
+    minute = 0;
+    second = 0;
+    millisecond = 0;
+    $('#hour').innerText = '0';
+    $('#minute').innerText = '0';
+    $('#second').innerText = '0';
+};
 
-//Score: get timer value at last question answered
-var savedScore = 
+function timer() {
+    if ((millisecond += 10) == 1000) {
+        millisecond = 0;
+        second++;
+    }
+    if (second == 60) {
+        second = 0;
+        minute++;
+    }
+    if (minute == 60) {
+        minute = 0;
+        hour++;
+    }
+    $('#hour').innerText = returnData(hour);
+    $('#minute').innerText = returnData(minute);
+    $('#second').innerText = returnData(second);
+}
+
 
 //Save score: display score in 'end' html by ID
 $('#display-score').innerText = savedScore; 
