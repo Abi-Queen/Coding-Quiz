@@ -58,7 +58,7 @@ var questions = [{
         { text: "JSON.stringify", key: true},
         { text: "getElementById", key: false}
     ]
-}
+},
 {
     id: 6,
     q: "Which of the following is function-scoped, NOT block-scoped?",
@@ -116,15 +116,15 @@ var questions = [{
 ];
 
 //Function to iterate through questions, on startBtn, display question in html by id
-$('#start-btn').on("click", function(){
-    startQuiz = () => {
-        var question = questions.forEach(displayQuestion(questions, 0))
-        var displayQuestion = $('#question').innerText=question.text
-    };
-});
+function startQuiz () {
+    var question = questions.forEach(displayQuestion(questions, 0));
+    var displayQuestion = $('#question').innerText = question.text;
+};
+$('#start-btn').onclick(startQuiz());
 
-//add question counter
-var questionCounter = function(
+
+//add question counter, save as questionsAnswered but how??? add attribute/val to displayQuestion?
+
 
 
 //Display options 1-4 in html by ID
@@ -137,12 +137,8 @@ let second = 0;
 
 let cron;
 
+//start and rest with click events
 $('#start-btn').onclick = () => startTimer();
-
-//save timer to localStorage when question counter = 10, save timer to localStorage, then reset
-$('#questioncounter=0') = () => pause();
-var savedScore = localStorage.setItem("timer at 10th question")
-
 $('#submit-btn').onclick = () => reset();
 
 function startTimer() {
@@ -164,6 +160,7 @@ function reset() {
     $('#second').innerText = '0';
 };
 
+//run timer, pause and save to localstorage 
 function timer() {
     if ((millisecond += 10) == 1000) {
         millisecond = 0;
@@ -180,11 +177,15 @@ function timer() {
     $('#hour').innerText = returnData(hour);
     $('#minute').innerText = returnData(minute);
     $('#second').innerText = returnData(second);
-}
+    //create score variable from timer at 10th question answered, save to localstorage
+    if (questionsAnswered = 10) {
+        pause();
+        var savedScore = localStorage.setItem($('#timer'))
+        //display savedScore in 'end' html by id
+        then($('#display-score').innerText = savedScore); 
+    }
+};
 
-
-//Save score: display score in 'end' html by ID
-$('#display-score').innerText = savedScore; 
 
 //Accept user input for initials, display with score in ol in 'scores' html by id
 $('#initials').click(function () {
