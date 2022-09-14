@@ -1,76 +1,72 @@
 // Global variables
 
+// HOW to dynamically create the end, start, scores html, and show and hide? ???
 
 //Create an array of questions and options
 var questions = [{
-    id: 0,
     q: "Where is the correct place to insert a JavaScript?",
-    o: [{ text: "The <head> section", key: false },
-        { text: "Both the <head> section and the <body> section", key: false },
-        { text: "The beginning of the <body> section", key: false },
-        { text: "The end of the <body> section", key: true }
+    o: [{ text: "The <head> section"},
+        { text: "Both the <head> section and the <body> section"},
+        { text: "The beginning of the <body> section"},
+        { text: "The end of the <body> section"}
     ],
     a: "The end of the <body> section"
 },
 {
-    id: 1,
     q: "What is the correct syntax for referring to an external script called 'file.js'?",
-    o: [{ text: "<script href='file.js'>", key: false },
-        { text: "<script name='file.js'>", key: false },
-        { text: "<script src='file.js'>", key: true },
-        { text: "<script al='file.js'>", key: false }
+    o: [{ text: "<script href='file.js'>"},
+        { text: "<script name='file.js'>"},
+        { text: "<script src='file.js'>"},
+        { text: "<script al='file.js'>"}
     ],
     a: "<script src='file.js'>"
-
 },
 {
-    id: 2,
     q: "How do you write 'Hello World' in an alert box?",
-    o: [{ text: "alert('Hello World')", key: true },
-        { text: "alertBox('Hello World')", key: false },
-        { text: "msg('Hello World')", key: false },
-        { text: "msgBox('Hello World')", key: false }
-    ]
-
+    o: [{ text: "alert('Hello World')"},
+        { text: "alertBox('Hello World')"},
+        { text: "msg('Hello World')"},
+        { text: "msgBox('Hello World')"}
+    ],
+    a: "alert('Hello World')"
 },
 {
-    id: 3,
     q: "How many columns are in a Bootstrap grid row?",
-    o: [{ text: "unlimited", key: false },
-        { text: "12", key: true},
-        { text: "1", key: false},
-        { text: "6", key: false}
-    ]
+    o: [{ text: "unlimited"},
+        { text: "12"},
+        { text: "1"},
+        { text: "6"}
+    ],
+    a: "12"
 },
 {
-    id: 4,
     q: "Which of the following is a Third-Party API?",
-    o: [{ text: "DOM", key: false },
-        { text: "JSTOR", key: false },
-        { text: "JavaScript", key: false},
-        { text: "jQuery", key: true}
-    ]
+    o: [{ text: "DOM"},
+        { text: "JSTOR"},
+        { text: "JavaScript"},
+        { text: "jQuery"}
+    ],
+    a: "jQuery"
 },
 {
-    id: 5,
     q: "To save array items to local storage, use:",
-    o: [{ text: "setInterval", key: false },
-        { text: "Bootstrap", key: false },
-        { text: "JSON.stringify", key: true},
-        { text: "getElementById", key: false}
-    ]
+    o: [{ text: "setInterval"},
+        { text: "Bootstrap"},
+        { text: "JSON.stringify"},
+        { text: "getElementById"}
+    ],
+    a: "JSON.stringify"
 },
 {
-    id: 6,
     q: "Which of the following is function-scoped, NOT block-scoped?",
-    o: [{ text: "var", key: true },
-        { text: "const", key: false },
-        { text: "let", key: false},
-        { text: ".forEach", key: false}
-    ]
+    o: [{ text: "var"},
+        { text: "const"},
+        { text: "let"},
+        { text: ".forEach"}
+    ],
+    a: "var"
 },
 {
-    id: 7,
     q: "Which of the following locks a variable's definition so that it can't change over tiem?",
     o: [{ text: "let and var", key: false },
         { text: "val", key: false },
@@ -79,16 +75,15 @@ var questions = [{
     ]
 },
 {
-    id: 8,
     q: "=> replaces",
-    o: [{ text: "DOM", key: false },
-        { text: "function", key: true },
-        { text: "HTML tags", key: false},
-        { text: "const", key: false}
-    ]
+    o: [{ text: "DOM"},
+        { text: "function"},
+        { text: "HTML tags"},
+        { text: "const"}
+    ],
+    a: "function"
 },
 {
-    id: 9,
     q: "Which CSS attribute can be used to created rounded corners?",
     O: [{ text: "border-radius", key: true },
         { text: "radius", key: false },
@@ -147,7 +142,7 @@ function checkAnswer(){
         alert("Correct");
         //add point to score
         counter++;
-        //add if to end quiz if it's the last question in the array
+        //add if to end quiz if it's the last question in the array; if end start new function end() to create var savedScore
         showQuestion();
     }
     //add else for wrong asnwer
@@ -183,6 +178,7 @@ $("#start-btn").on("click", function(){
 })
 
 // if answered last question, hide questions div and show end div
+
 //prompt for initials
 //Accept user input for initials, display with score (in ol?) in 'scores' html by id
 $('#initials').click(function () {
