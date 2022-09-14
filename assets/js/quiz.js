@@ -116,85 +116,75 @@ var questions = [{
 }
 ];
 
-//Function to iterate through questions, on startBtn, display question in html by id
-function startQuiz () {
-    var question = questions.forEach(displayQuestion(questions, 0));
-    var displayQuestion = $('#question').innerText = question.text;
-    var displayOptions = $('#op1').innerText = options.text;
-
-    function selectedOption () {
-        if $('#op1').onclick {setAttribute($('#op1'))
-    }
-    //add attr/id to option that's clicked with click event and add attr with (setAttribute) and (this)?
-    if {o}
-};
-
-$('#start-btn').onclick(startQuiz());
-
-
-//add question counter
+var time = 180;
 var counter = 0;
+var timerId;
+var score = 0; 
 
+$("#questions").hide();
 
-//Display options 1-4 in html by ID
+//timer function to count down
+function timer(){
+    timerId = setInterval(countdown, 1000);
+        function countdown() {
+            if (time === -1) {
+                clearTimeout(timerId);
+               /* resultCount();
+                $("#ques_div").hide();
+                $("#res_div").show(); */
+            }
+            else{
+                $("#hour").text(time);
+                time--;
+            }
+        }
+}
 
-
-//Timer function: start on start-btn, display in header, end when 10th question answered, save to localStorage
-let time = 90;
-
-let cron;
-
-//start and rest with click events
-$('#start-btn').onclick = () => startTimer();
-$('#submit-btn').onclick = () => reset();
-
-function startTimer() {
-    pause();
-    cron = setInterval(() => {timer(); }, 1000);
-};
-
-function pause() {
-    clearInterval(cron);
-};
-
-function reset() {
-    hour = 0;
-    minute = 0;
-    second = 0;
-    millisecond = 0;
-    $('#hour').innerText = '0';
-    $('#minute').innerText = '0';
-    $('#second').innerText = '0';
-};
-
-//run timer, pause and save to localstorage 
-function timer() {
-    if ((millisecond += 10) == 1000) {
-        millisecond = 0;
-        second++;
+// function to check if clicked answer is correct answer
+function checkAnswer(){
+    if($(this).attr("data-answer") === questions[counter].a)
+    {
+        alert("Correct");
+        //add point to score
+        counter++;
+        //add if to end quiz if it's the last question in the array
+        showQuestion();
     }
-    if (second == 60) {
-        second = 0;
-        minute++;
-    }
-    if (minute == 60) {
-        minute = 0;
-        hour++;
-    }
-    $('#hour').innerText = returnData(hour);
-    $('#minute').innerText = returnData(minute);
-    $('#second').innerText = returnData(second);
-    //create score variable from timer at 10th question answered, save to localstorage
-    if (questionsAnswered = 10) {
-        pause();
-        var savedScore = localStorage.setItem($('#timer'))
-        //display savedScore in 'end' html by id
-        then($('#display-score').innerText = savedScore); 
-    }
-};
+    //add else for wrong asnwer
+    //else: decrement time by 10 sec if the answer is wrong
+    //else: add 0 points to score
+    //else: increment counter by 1 and add IF condition to see if it's a last question
 
+}
 
-//Accept user input for initials, display with score in ol in 'scores' html by id
+//function to show next question
+function showQuestion(){
+$("#questions").empty();
+ var h3 = $("<h3>");
+ h3.text(questions[counter].q);
+ $("#questions").append(h3);
+
+ for(var i=0; i<questions[counter].o.length;i++){
+    var btn = $("<button>");
+    btn.text(questions[counter].o[i].text);
+    btn.attr("data-answer", questions[counter].o[i].text);
+    btn.click(checkAnswer);
+    $("#questions").append(btn);
+
+ }
+}
+
+//show question on start button, hide start div and show questions div
+$("#start-btn").on("click", function(){
+    $("#start").hide();
+    $("#questions").show();
+    timer();
+    showQuestion();
+})
+
+// if answered last question, hide questions div and show end div
+//prompt for initials
+//Accept user input for initials, display with score (in ol?) in 'scores' html by id
 $('#initials').click(function () {
     var initials = $('input[name=initials]').val(); //sets var as form input
     $('#initialsSaved').innerText = initials; //sets initials entered in score page
@@ -203,15 +193,3 @@ $('#initials').click(function () {
 
 //Save score and initials to local storage
 localStorage.setItem("initials", savedScore)
-
-//If clicked option has value "true", display new question
-
-//If clicked option has value "false", deduct 10 seconds from timer
-
-//Restart quiz, clear score, timer, questionsAnswered, clear attributes
-function restart() {
-    questionCounter = 0;
-    questionsAnswered = 0; 
-    score = 0; 
-    startQuiz();
-};
