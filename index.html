@@ -16,15 +16,35 @@
 				<a href="./scores.html">View high scores</a>
 			</div>
 			<div class="col-2" id="timer">
-				<p>Time: <span id="hour">0</span></p>
+				<p>Time:<span id="hour"> 0 </span></p>
 			</div>
 		</div>
 	</header>
-	<div id="start">
-	<p>Rules..</p>
-	<button id="start-btn">Start</button>
+
+	<div class="container w-100 start-panel" id="start">
+		<h2 class="row justify-content-center">Coding Quiz Challenge</h2>
+		<div class="row">
+			<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+		</div>
+        <button class="row btn" id="start-btn">Start Quiz</button>
 	</div>
-	<div id="questions">
+	<div class="container w-100 questions-panel" id="questions"></div>
+	<div class="container w-100 end-panel" id="end">
+		<div class="row end-panel">
+			<h2 class="row">All done!</h2>
+			<p class="row" id="display-score"></p>
+			<div class="row">
+				<form class="col">
+					<label for="initials">Enter initials:</label>
+					<input type="text" placeholder="" id="initials" name="initials" class="initials-input"/>
+				</form>
+				<button class="col btn" id="submit-btn">Submit</button>
+			</div>
+		</div>
+	</div>
+	<div class="container w-100 scores-panel" id="scores"></div>
+
+
 <!--	<div class="container w-100 quiz-panel">
 		<div class="row justify-content-center">
 			<div class="col-1">
@@ -45,7 +65,6 @@
 			</div>
 		</div>
 	</div> -->
-</div>
 	
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/js/quiz.js"></script>

@@ -9,6 +9,9 @@ header {
     padding: 30px 20px;
 	font-weight: bold;
 }
+/* #end {
+	display: none; 
+} */
 #scores-list {
 	color: rgb(209, 10, 113);
 }
