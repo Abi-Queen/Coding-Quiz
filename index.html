@@ -28,7 +28,14 @@
 		</div>
         <button class="row btn" id="start-btn">Start Quiz</button>
 	</div>
-	<div class="container w-100 questions-panel" id="questions"></div>
+
+	<div class="container w-100 questions-panel" id="questions">
+		<h3 id="question-text"></h3>
+		<div class="row options justify-content-center">
+			<div id="options"></div>
+		</div>	
+	</div>
+
 	<div class="container w-100 end-panel" id="end">
 		<div class="row end-panel">
 			<h2 class="row">All done!</h2>
@@ -42,29 +49,24 @@
 			</div>
 		</div>
 	</div>
-	<div class="container w-100 scores-panel" id="scores"></div>
 
-
-<!--	<div class="container w-100 quiz-panel">
-		<div class="row justify-content-center">
-			<div class="col-1">
-				<h2 id="question">question</h2>
-			</div>
+	<div class="container w-100 scores-panel" id="scores">
+		<h2 class="row">High scores</h2>
+		<!-- js dynamically inserts table displaying high scores ordered list -->
+		<div class="row table" id="scores-table">
+			<ol id="high-scores">
+				<li>
+					<span id="initialsSaved"></span><span id="scoreSaved"></span>
+				</li>
+			</ol>
 		</div>
-		<div class="row options justify-content-center">
-			<div class="col-1">
-				<button class="option" id="op1">option1</button>
-				<button class="option" id="op2">option2</button>
-				<button class="option" id="op3">option3</button>
-				<button class="option" id="op4">option4</button>
-			</div>
-		</div>	
-		<div class="row justify-content-center">
-			<div class="col-1">
-				<h2 id="result">result</h2>
-			</div>
+		<div class="row">
+			<button class="col btn backBtn">
+				<a href="#start">Go back</a>
+			</button>
+			<button class="col btn clearBtn">Clear high scores</button>
 		</div>
-	</div> -->
+	</div>
 	
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/js/quiz.js"></script>
