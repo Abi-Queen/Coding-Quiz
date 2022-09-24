@@ -89,10 +89,10 @@ var questions = [{
 var time = 180;
 var counter = 0;
 var timerId;
+var score = 0; 
 
-$('#questions').hide();
-$('#end').hide();
-$('#scores').hide();
+$("#questions").hide();
+$("#end").hide();
 
 //timer function to count down (time is score)
 function timer(){
@@ -100,6 +100,9 @@ function timer(){
         function countdown() {
             if (time === -1) {
                 clearTimeout(timerId);
+               /* resultCount();
+                $("#ques_div").hide();
+                $("#res_div").show(); */
             }
             else{
                 $("#hour").text(time);
@@ -109,8 +112,6 @@ function timer(){
         };
 };
 
-<<<<<<< HEAD
-=======
 //function to show next question
 function showQuestion(){
     $("#questions").empty();
@@ -132,7 +133,6 @@ function showQuestion(){
      }
 };
     
->>>>>>> feature/iterate
 //on start button, hide start/end divs and show questions div
 $('#start-btn').on('click', function(){
     $('#start').hide();
@@ -142,20 +142,6 @@ $('#start-btn').on('click', function(){
     showQuestion();
 });
 
-//function to show next question
-function showQuestion(){
-    $('#options').empty(); 
-    var h3 = $('#question-text');
-    h3.text(questions[counter].q);
-     for(var i=0; i<questions[counter].o.length;i++){
-        var btn = $("<button>");
-        btn.text(questions[counter].o[i].text);
-        btn.attr("data-answer", questions[counter].o[i].text);
-        btn.click(checkAnswer);
-        $("#options").append(btn);
-     }
-};
-
 // function to check if clicked answer is correct answer
 function checkAnswer(){
     //if correct answer go to next question
@@ -163,13 +149,13 @@ function checkAnswer(){
     {
         console.log("correct");
         counter++;
-        showQuestion(); 
     }
     //if wrong answer decrement timer by 10 seconds
     else if ($(this).attr("data-answer") != questions[counter].a) {
         console.log("wrong answer");
         time-10;
     };
+    showQuestion(); 
 }; 
 
 //function to end quiz on last answered question
@@ -192,8 +178,6 @@ function end(){
         showEnd();
     }
 };
-end();
-//or does this go above with start function?
 
 //prompt for initials
 //Accept user input for initials, display with score (in ol?) in 'scores' html by id
