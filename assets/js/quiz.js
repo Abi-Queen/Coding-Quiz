@@ -129,6 +129,7 @@ function showQuestion(){
         btn.attr("data-answer", questions[counter].o[i].text);
         btn.click(checkAnswer);
         $("#questions").append(btn);
+        $("button").addClass("btn-block");
      }
 };
     
@@ -160,23 +161,22 @@ function checkAnswer(){
 //function to end quiz on last answered question
 function end(){
     if(counter === (questions.length)-1) {
-        console.log("string");
-        // create end function 
-        function end() {
-            // show end div and hide questions div
-            function showEnd() {
-            $('#questions').hide();
-            $('#end').show();
-            // if end, stop timer
-            clearTimeout(timerId); 
-            // if end, create var savedScore (timer) and save to localStorage
-            function saveScore() {
-                var savedScore = this.time; 
-                localStorage.setItem("score", savedScore);
-            };
+        console.log("the end");
+        // show end div and hide questions div
+        function showEnd() {
+        $('#questions').hide();
+        $('#end').show();
         };
+        // stop timer
+        clearTimeout(timerId); 
+        //create var savedScore (current timer) and save to localStorage
+        function saveScore() {
+            var savedScore = $('#hour').innerText; 
+            localStorage.setItem("score", savedScore);
         };
-    };
+        saveScore(score);
+        showEnd();
+    }
 };
 
 //prompt for initials
