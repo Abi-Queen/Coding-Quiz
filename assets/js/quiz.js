@@ -175,27 +175,11 @@ function checkAnswer(){
 //function to end quiz on last answered question
 function end(){
     if(counter === (questions.length)-1) {
-<<<<<<< HEAD
-        console.log("string");
-=======
         console.log("the end");
->>>>>>> feature/iterate
         // show end div and hide questions div
         function showEnd() {
         $('#questions').hide();
         $('#end').show();
-<<<<<<< HEAD
-        // if end, stop timer
-        clearTimeout(timerId); 
-        // if end, create var savedScore (timer) and save to localStorage
-        function saveScore() {
-            var savedScore = $('#hour').innerText; 
-            //will this capture the time at ending? (above)?
-            localStorage.setItem("score", savedScore);
-        };
-    };
-    };
-=======
         };
         // stop timer
         clearTimeout(timerId); 
@@ -207,7 +191,6 @@ function end(){
         saveScore(score);
         showEnd();
     }
->>>>>>> feature/iterate
 };
 end();
 //or does this go above with start function?
