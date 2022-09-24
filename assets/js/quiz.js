@@ -109,6 +109,30 @@ function timer(){
         };
 };
 
+<<<<<<< HEAD
+=======
+//function to show next question
+function showQuestion(){
+    $("#questions").empty();
+     var h3 = $("<h3>");
+    h3.text(questions[counter].q);
+     $("#questions").append(h3);
+    
+     console.log(questions[counter]);
+     console.log(questions); 
+     console.log(questions[counter].o);
+    
+     for(var i=0; i<questions[counter].o.length;i++){
+        var btn = $("<button>");
+        btn.text(questions[counter].o[i].text);
+        btn.attr("data-answer", questions[counter].o[i].text);
+        btn.click(checkAnswer);
+        $("#questions").append(btn);
+        $("button").addClass("btn-block");
+     }
+};
+    
+>>>>>>> feature/iterate
 //on start button, hide start/end divs and show questions div
 $('#start-btn').on('click', function(){
     $('#start').hide();
@@ -151,11 +175,16 @@ function checkAnswer(){
 //function to end quiz on last answered question
 function end(){
     if(counter === (questions.length)-1) {
+<<<<<<< HEAD
         console.log("string");
+=======
+        console.log("the end");
+>>>>>>> feature/iterate
         // show end div and hide questions div
         function showEnd() {
         $('#questions').hide();
         $('#end').show();
+<<<<<<< HEAD
         // if end, stop timer
         clearTimeout(timerId); 
         // if end, create var savedScore (timer) and save to localStorage
@@ -166,6 +195,19 @@ function end(){
         };
     };
     };
+=======
+        };
+        // stop timer
+        clearTimeout(timerId); 
+        //create var savedScore (current timer) and save to localStorage
+        function saveScore() {
+            var savedScore = $('#hour').innerText; 
+            localStorage.setItem("score", savedScore);
+        };
+        saveScore(score);
+        showEnd();
+    }
+>>>>>>> feature/iterate
 };
 end();
 //or does this go above with start function?

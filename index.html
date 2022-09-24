@@ -21,6 +21,7 @@
 		</div>
 	</header>
 
+	<!-- START DISPLAY DIV-->
 	<div class="container w-100 start-panel" id="start">
 		<h2 class="row justify-content-center">Coding Quiz Challenge</h2>
 		<div class="row">
@@ -29,13 +30,10 @@
         <button class="row btn" id="start-btn">Start Quiz</button>
 	</div>
 
-	<div class="container w-100 questions-panel" id="questions">
-		<h3 id="question-text"></h3>
-		<div class="row options justify-content-center">
-			<div id="options"></div>
-		</div>	
-	</div>
+	<!-- MAIN QUIZ QUESTION DISPLAY DIV-->
+	<div class="container w-100 questions-panel" id="questions"></div>
 
+	<!-- END ENTER INITIALS DISPLAY DIV-->
 	<div class="container w-100 end-panel" id="end">
 		<div class="row end-panel">
 			<h2 class="row">All done!</h2>
@@ -50,23 +48,9 @@
 		</div>
 	</div>
 
-	<div class="container w-100 scores-panel" id="scores">
-		<h2 class="row">High scores</h2>
-		<!-- js dynamically inserts table displaying high scores ordered list -->
-		<div class="row table" id="scores-table">
-			<ol id="high-scores">
-				<li>
-					<span id="initialsSaved"></span><span id="scoreSaved"></span>
-				</li>
-			</ol>
-		</div>
-		<div class="row">
-			<button class="col btn backBtn">
-				<a href="#start">Go back</a>
-			</button>
-			<button class="col btn clearBtn">Clear high scores</button>
-		</div>
-	</div>
+	<!-- SCORES DISPLAY DIV-->
+	<div class="container w-100 scores-panel" id="scores"></div>
+
 	
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/js/quiz.js"></script>
