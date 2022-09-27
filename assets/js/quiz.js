@@ -3,52 +3,53 @@
 // HOW to dynamically create the end, start, scores html, and show and hide? ???
 
 //Create an array of questions and options
-var questions = [{
-    q: "Where is the correct place to insert a JavaScript?",
-    o: [{ text: "The <head> section"},
-        { text: "Both the <head> section and the <body> section"},
-        { text: "The beginning of the <body> section"},
-        { text: "The end of the <body> section"}
-    ],
-    a: "The end of the <body> section"
-},
-{
-    q: "What is the correct syntax for referring to an external script called 'file.js'?",
-    o: [{ text: "<script href='file.js'>"},
-        { text: "<script name='file.js'>"},
-        { text: "<script src='file.js'>"},
-        { text: "<script al='file.js'>"}
-    ],
-    a: "<script src='file.js'>"
-},
-{
-    q: "How many columns are in a Bootstrap grid row?",
-    o: [{ text: "unlimited"},
-        { text: "12"},
-        { text: "1"},
-        { text: "6"}
-    ],
-    a: "12"
-},
-{
-    q: "Which of the following is a Third-Party API?",
-    o: [{ text: "DOM"},
-        { text: "JSTOR"},
-        { text: "JavaScript"},
-        { text: "jQuery"}
-    ],
-    a: "jQuery"
-},
-{
-    q: "To save array items to local storage, use:",
-    o: [{ text: "setInterval"},
-        { text: "Bootstrap"},
-        { text: "JSON.stringify"},
-        { text: "getElementById"}
-    ],
-    a: "JSON.stringify"
-},
-{
+var questions = [
+    {
+//     q: "Where is the correct place to insert a JavaScript?",
+//     o: [{ text: "The <head> section"},
+//         { text: "Both the <head> section and the <body> section"},
+//         { text: "The beginning of the <body> section"},
+//         { text: "The end of the <body> section"}
+//     ],
+//     a: "The end of the <body> section"
+// },
+// {
+//     q: "What is the correct syntax for referring to an external script called 'file.js'?",
+//     o: [{ text: "<script href='file.js'>"},
+//         { text: "<script name='file.js'>"},
+//         { text: "<script src='file.js'>"},
+//         { text: "<script al='file.js'>"}
+//     ],
+//     a: "<script src='file.js'>"
+// },
+// {
+//     q: "How many columns are in a Bootstrap grid row?",
+//     o: [{ text: "unlimited"},
+//         { text: "12"},
+//         { text: "1"},
+//         { text: "6"}
+//     ],
+//     a: "12"
+// },
+// {
+//     q: "Which of the following is a Third-Party API?",
+//     o: [{ text: "DOM"},
+//         { text: "JSTOR"},
+//         { text: "JavaScript"},
+//         { text: "jQuery"}
+//     ],
+//     a: "jQuery"
+// },
+// {
+//     q: "To save array items to local storage, use:",
+//     o: [{ text: "setInterval"},
+//         { text: "Bootstrap"},
+//         { text: "JSON.stringify"},
+//         { text: "getElementById"}
+//     ],
+//     a: "JSON.stringify"
+// },
+// {
     q: "Which of the following is function-scoped, NOT block-scoped?",
     o: [{ text: "var"},
         { text: "const"},
@@ -58,7 +59,7 @@ var questions = [{
     a: "var"
 },
 {
-    q: "Which of the following locks a variable's definition so that it can't change over tiem?",
+    q: "Which of the following locks a variable's definition so that it can't change over time?",
     o: [{ text: "let and var"},
         { text: "val"},
         { text: "arrow functions"},
@@ -93,16 +94,14 @@ var score = 0;
 
 $("#questions").hide();
 $("#end").hide();
+$('#scores').hide();
 
-//timer function to count down (time is score)
+//timer function to count down (time is score), display time
 function timer(){
     timerId = setInterval(countdown, 1000);
         function countdown() {
             if (time === -1) {
                 clearTimeout(timerId);
-               /* resultCount();
-                $("#ques_div").hide();
-                $("#res_div").show(); */
             }
             else{
                 $("#hour").text(time);
@@ -114,16 +113,15 @@ function timer(){
 
 //function to show next question
 function showQuestion(){
+    console.log(counter);
+    if (counter <= 4)
+    {
     $("#questions").empty();
      var h3 = $("<h3>");
     h3.text(questions[counter].q);
-     $("#questions").append(h3);
-    
-     console.log(questions[counter]);
-     console.log(questions); 
-     console.log(questions[counter].o);
-    
-     for(var i=0; i<questions[counter].o.length;i++){
+     $("#questions").append(h3)
+
+     for(var i = 0; i < questions[counter].o.length; i++){
         var btn = $("<button>");
         btn.text(questions[counter].o[i].text);
         btn.attr("data-answer", questions[counter].o[i].text);
@@ -131,12 +129,17 @@ function showQuestion(){
         $("#questions").append(btn);
         $("button").addClass("btn-block");
      }
+    } else 
+    {
+        end();
+    }
 };
     
-//on start button, hide start/end divs and show questions div
+//on start button, hide start/end, scores divs and show questions div
 $('#start-btn').on('click', function(){
     $('#start').hide();
     $('#end').hide();
+    $('#scores').hide();
     $('#questions').show();
     timer();
     showQuestion();
@@ -155,12 +158,19 @@ function checkAnswer(){
         console.log("wrong answer");
         time-10;
     };
-    showQuestion(); 
+    showQuestion();
+    // if (counter <= 4)
+    // {
+    // showQuestion(); 
+    // }
+    // else (
+    //     end()
+    // )
 }; 
 
 //function to end quiz on last answered question
 function end(){
-    if(counter === (questions.length)-1) {
+    // if(counter === (questions.length)-1) {
         console.log("the end");
         // show end div and hide questions div
         function showEnd() {
@@ -171,21 +181,25 @@ function end(){
         clearTimeout(timerId); 
         //create var savedScore (current timer) and save to localStorage
         function saveScore() {
-            var savedScore = $('#hour').innerText; 
+            var savedScore = time;  
             localStorage.setItem("score", savedScore);
         };
-        saveScore(score);
+        saveScore();
+        //display savedScore in "end / enter intiials" div
+        $('#display-score').text(savedScore);
         showEnd();
-    }
+        // end();
+    // }
+    // put initials input in this function or a new one? how will it know to go there next?
 };
 
 //prompt for initials
-//Accept user input for initials, display with score (in ol?) in 'scores' html by id
+//Accept user input for initials, save to localStorage
 $('#initials').click(function () {
     var initials = $('input[name=initials]').val(); //sets var as form input
     $('#initialsSaved').innerText = initials; //sets initials entered in score page
     $('input[name=initials]').val(''); //re-sets form on end page to empty string
+    localStorage.setItem("initials", initials);
 });
 
-//Save score and initials to local storage
-// localStorage.setItem("initials", savedScore)
+// localStorage.setItem("initials", savedScore) paired together for display in high scores ol ?
