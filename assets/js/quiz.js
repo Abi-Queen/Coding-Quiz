@@ -114,7 +114,7 @@ function timer(){
 //function to show next question
 function showQuestion(){
     console.log(counter);
-    if (counter <= 4)
+    if (counter < 4)
     {
     $("#questions").empty();
      var h3 = $("<h3>");
@@ -186,7 +186,7 @@ function end(){
         };
         saveScore();
         //display savedScore in "end / enter intiials" div
-        $('#display-score').text(savedScore);
+        $('#display-score').text(time);
         showEnd();
         // end();
     // }
