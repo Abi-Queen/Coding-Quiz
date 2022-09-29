@@ -156,50 +156,38 @@ function checkAnswer(){
     //if wrong answer decrement timer by 10 seconds
     else if ($(this).attr("data-answer") != questions[counter].a) {
         console.log("wrong answer");
-        time-10;
+        timerId-10;
     };
     showQuestion();
-    // if (counter <= 4)
-    // {
-    // showQuestion(); 
-    // }
-    // else (
-    //     end()
-    // )
 }; 
+
+//create var savedScore (current timer) and save to localStorage
+function saveScore() {
+    var savedScore = time;  
+    localStorage.setItem("score", savedScore);
+};
 
 //function to end quiz on last answered question
 function end(){
-    // if(counter === (questions.length)-1) {
         console.log("the end");
         // show end div and hide questions div
         function showEnd() {
         $('#questions').hide();
         $('#end').show();
         };
-        // stop timer
         clearTimeout(timerId); 
-        //create var savedScore (current timer) and save to localStorage
-        function saveScore() {
-            var savedScore = time;  
-            localStorage.setItem("score", savedScore);
-        };
-        saveScore();
         //display savedScore in "end / enter intiials" div
         $('#display-score').text(time);
         showEnd();
-        // end();
-    // }
-    // put initials input in this function or a new one? how will it know to go there next?
+        saveScore();
 };
 
 //prompt for initials
 //Accept user input for initials, save to localStorage
 $('#initials').click(function () {
-    var initials = $('input[name=initials]').val(); //sets var as form input
-    $('#initialsSaved').innerText = initials; //sets initials entered in score page
-    $('input[name=initials]').val(''); //re-sets form on end page to empty string
+    var initials = $('input[name=initials]').val(); 
+    $('input[name=initials]').val(''); 
     localStorage.setItem("initials", initials);
+    $('#display-initials').text(initials);
 });
 
-// localStorage.setItem("initials", savedScore) paired together for display in high scores ol ?
