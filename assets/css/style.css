@@ -9,10 +9,15 @@ header {
     padding: 30px 20px;
 	font-weight: bold;
 }
-#scores-list {
+#high-scores {
 	color: rgb(209, 10, 113);
 }
-#start-btn, #submit-btn {
+.scores-table{
+	border: black 1px;
+	align-content: center; 
+}
+#start-btn, #submit-btn, .backBtn .resetBtn {
+	text-color: black;
 	border: 1px solid black;
 	border-radius: 25%;
 	background-color: rgb(46, 229, 202);

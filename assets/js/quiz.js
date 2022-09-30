@@ -87,13 +87,14 @@ var questions = [
 }
 ];
 
-var time = 180;
+var time = 60;
 var counter = 0;
 var timerId;
 var score = 0; 
+$('input[name=initials]').val('');
 
-$("#questions").hide();
-$("#end").hide();
+$('#questions').hide();
+$('#end').hide();
 $('#scores').hide();
 
 //timer function to count down (time is score), display time
@@ -104,9 +105,9 @@ function timer(){
                 clearTimeout(timerId);
             }
             else{
-                $("#hour").text(time);
+                $('#hour').text(time);
                 time--;
-                localStorage.setItem("time",time);
+                localStorage.setItem('time',time);
             }
         };
 };
@@ -116,18 +117,18 @@ function showQuestion(){
     console.log(counter);
     if (counter < 4)
     {
-    $("#questions").empty();
-     var h3 = $("<h3>");
+    $('#questions').empty();
+     var h3 = $('<h3>');
     h3.text(questions[counter].q);
-     $("#questions").append(h3)
+     $('#questions').append(h3)
 
      for(var i = 0; i < questions[counter].o.length; i++){
-        var btn = $("<button>");
+        var btn = $('<button>');
         btn.text(questions[counter].o[i].text);
-        btn.attr("data-answer", questions[counter].o[i].text);
+        btn.attr('data-answer', questions[counter].o[i].text);
         btn.click(checkAnswer);
-        $("#questions").append(btn);
-        $("button").addClass("btn-block");
+        $('#questions').append(btn);
+        $('button').addClass('btn-block');
      }
     } else 
     {
@@ -148,46 +149,57 @@ $('#start-btn').on('click', function(){
 // function to check if clicked answer is correct answer
 function checkAnswer(){
     //if correct answer go to next question
-    if($(this).attr("data-answer") === questions[counter].a)
+    if($(this).attr('data-answer') === questions[counter].a)
     {
-        console.log("correct");
+        console.log('correct');
         counter++;
     }
     //if wrong answer decrement timer by 10 seconds
-    else if ($(this).attr("data-answer") != questions[counter].a) {
-        console.log("wrong answer");
-        timerId-10;
+    else if ($(this).attr('data-answer') != questions[counter].a) {
+        console.log('wrong answer');
+        time = time-10;
     };
     showQuestion();
 }; 
 
-//create var savedScore (current timer) and save to localStorage
+//create var savedScore (current timer) and save to localStorage, display in "end/enter initials" and "scores" divs
 function saveScore() {
     var savedScore = time;  
-    localStorage.setItem("score", savedScore);
+    localStorage.setItem('score', savedScore);
+    $('#display-score').text(time);
 };
 
-//function to end quiz on last answered question
+//function to end quiz on last question
 function end(){
-        console.log("the end");
+        console.log('the end');
         // show end div and hide questions div
         function showEnd() {
         $('#questions').hide();
         $('#end').show();
         };
-        clearTimeout(timerId); 
-        //display savedScore in "end / enter intiials" div
-        $('#display-score').text(time);
+        clearTimeout(timerId);  
         showEnd();
         saveScore();
 };
 
-//prompt for initials
-//Accept user input for initials, save to localStorage
+//Accept user input for initials, save to localStorage, display on scores page
 $('#initials').click(function () {
-    var initials = $('input[name=initials]').val(); 
-    $('input[name=initials]').val(''); 
-    localStorage.setItem("initials", initials);
-    $('#display-initials').text(initials);
+    var initials = $('input[name=initials]').val();
+    localStorage.setItem('initials', initials);
+    displayScores(); 
 });
+
+const displayScores = function() {
+    var li = $('<li>');
+    li.textContent(score + " : " + initials);
+    $('#high-scores').append(li);
+    $('li').addClass('scores-table');
+};
+
+$('.resetBtn').click(function() {
+    $('.scores-table').val('');
+    initials = '';
+    score = '';
+});
+
 
