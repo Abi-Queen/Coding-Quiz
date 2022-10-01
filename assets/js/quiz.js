@@ -185,7 +185,7 @@ function end(){
 //Accept user input for initials, save to localStorage, display on scores page
 $('#initials').click(function () {
     var initials = $('input[name=initials]').val();
-    localStorage.setItem('initials', initials);
+    then.localStorage.setItem('initials', initials);
     displayScores(); 
 });
 
@@ -198,8 +198,8 @@ const displayScores = function() {
 
 $('.resetBtn').click(function() {
     $('.scores-table').val('');
-    initials = '';
-    score = '';
+    then.initials = '';
+    then.score = '';
 });
 
 
