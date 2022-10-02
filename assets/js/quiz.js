@@ -185,21 +185,21 @@ function end(){
 //Accept user input for initials, save to localStorage, display on scores page
 $('#initials').click(function () {
     var initials = $('input[name=initials]').val();
-    then.localStorage.setItem('initials', initials);
+    localStorage.setItem('initials', initials);
     displayScores(); 
 });
 
 const displayScores = function() {
     var li = $('<li>');
-    li.textContent(score + " : " + initials);
     $('#high-scores').append(li);
-    $('li').addClass('scores-table');
+    $('li').addClass('.scores-table');
+    $('li').text(score + " : " + initials);
 };
 
 $('.resetBtn').click(function() {
     $('.scores-table').val('');
-    then.initials = '';
-    then.score = '';
+    initials = '';
+    score = '';
 });
 
 
