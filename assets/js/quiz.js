@@ -97,6 +97,13 @@ $('#questions').hide();
 $('#end').hide();
 $('#scores').hide();
 
+$('#scores-list').on('click', function(){
+    $('#start').hide();
+    $('#end').hide();
+    $('#questions').hide();
+    $('#scores').show();
+});
+
 //timer function to count down (time is score), display time
 function timer(){
     timerId = setInterval(countdown, 1000);
@@ -120,7 +127,7 @@ function showQuestion(){
     $('#questions').empty();
      var h3 = $('<h3>');
     h3.text(questions[counter].q);
-     $('#questions').append(h3)
+     $('#questions').append(h3);
 
      for(var i = 0; i < questions[counter].o.length; i++){
         var btn = $('<button>');
@@ -162,13 +169,6 @@ function checkAnswer(){
     showQuestion();
 }; 
 
-//create var savedScore (current timer) and save to localStorage, display in "end/enter initials" and "scores" divs
-function saveScore() {
-    var savedScore = time;  
-    localStorage.setItem('score', savedScore);
-    $('#display-score').text(time);
-};
-
 //function to end quiz on last question
 function end(){
         console.log('the end');
@@ -182,24 +182,40 @@ function end(){
         saveScore();
 };
 
-//Accept user input for initials, save to localStorage, display on scores page
-$('#initials').click(function () {
-    var initials = $('input[name=initials]').val();
-    localStorage.setItem('initials', initials);
-    displayScores(); 
+//Accept user input for initials, save with score in localStorage, display in for loop on scores page
+$('#submit-btn').click(function () {
+    var data = JSON.parse(localStorage.getItem("data")) || [];
+    data.push({
+        score: time,
+        initials: initials
+    })
+    localStorage.setItem('data', JSON.stringify(data));
+    displayScores(data); 
+    $('#end').hide();
+    $('#scores').show();
 });
 
-const displayScores = function() {
-    var li = $('<li>');
-    $('#high-scores').append(li);
-    $('li').addClass('.scores-table');
-    $('li').text(score + " : " + initials);
+const displayScores = function(data) {
+    for(var i=0; i<data.length; i++)
+    {
+        var li = $('<li>');
+        $('li').addClass('.scores-table');
+        $('li').text(data[i].initials + ": " + data[i].score);
+        $('#high-scores').append(li);
+    }
 };
 
 $('.resetBtn').click(function() {
     $('.scores-table').val('');
     initials = '';
     score = '';
+    localStorage.setItem('data', null);
+    var initials = $('input[name=initials]').val();
+    $('li').text('');
 });
 
+$('.backBtn').click(function() {
+    $('#scores').hide();
+    $('#start').show();
+});
 

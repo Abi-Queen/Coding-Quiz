@@ -12,8 +12,8 @@
 <body>
 	<header class="container">
 		<div class="row justify-content-between">
-			<div class="col-2" id="scores-list">
-				<a href="./scores.html">View high scores</a>
+			<button class="col-2 btn-block" id="scores-list">
+				<a>View high scores</a>
 			</div>
 			<div class="col-2" id="timer">
 				<p>Time:<span id="hour"> 0 </span></p>
@@ -27,7 +27,7 @@
 		<div class="row">
 			<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
 		</div>
-        <button class="row btn" id="start-btn">Start Quiz</button>
+        <button class="btn" id="start-btn">Start Quiz</button>
 	</div>
 
 	<!-- "MAIN QUESTIONS" DIV-->
@@ -45,11 +45,26 @@
 				<input type="text" placeholder="" id="initials" name="initials" class="initials-input"/>
 			</form>
 			<button class="col-4 btn" id="submit-btn">
-				<a class="stretched-link" href="./scores.html">Submit</a>
+				<a class="stretched-link">Submit</a>
 			</button>
 		</div>
 	</div>
 	
+	<!-- "SCORES" DIV -->
+	<div class="container w-100 scores-panel" id="scores">
+		<h2 class="row">High scores</h2>
+		<!-- table displaying high scores ordered list -->
+        <div class="row">
+            <ol id="high-scores"></ol>
+        </div>
+        <div class="row justify-content-around">
+            <button class="col-4 btn backBtn">
+                <a class="stretched-link">Go back</a>
+            </button>
+            <button class="col-4 btn resetBtn">Clear High Scores</button>
+        </div>
+	</div>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/js/quiz.js"></script>
 </body>
