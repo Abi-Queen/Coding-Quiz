@@ -23,33 +23,33 @@ var questions = [
 //     a: "<script src='file.js'>"
 // },
 // {
-//     q: "How many columns are in a Bootstrap grid row?",
-//     o: [{ text: "unlimited"},
-//         { text: "12"},
-//         { text: "1"},
-//         { text: "6"}
-//     ],
-//     a: "12"
-// },
-// {
-//     q: "Which of the following is a Third-Party API?",
-//     o: [{ text: "DOM"},
-//         { text: "JSTOR"},
-//         { text: "JavaScript"},
-//         { text: "jQuery"}
-//     ],
-//     a: "jQuery"
-// },
-// {
-//     q: "To save array items to local storage, use:",
-//     o: [{ text: "setInterval"},
-//         { text: "Bootstrap"},
-//         { text: "JSON.stringify"},
-//         { text: "getElementById"}
-//     ],
-//     a: "JSON.stringify"
-// },
-// {
+    q: "How many columns are in a Bootstrap grid row?",
+    o: [{ text: "unlimited"},
+        { text: "12"},
+        { text: "1"},
+        { text: "6"}
+    ],
+    a: "12"
+},
+{
+    q: "Which of the following is a Third-Party API?",
+    o: [{ text: "DOM"},
+        { text: "JSTOR"},
+        { text: "JavaScript"},
+        { text: "jQuery"}
+    ],
+    a: "jQuery"
+},
+{
+    q: "To save array items to local storage, use:",
+    o: [{ text: "setInterval"},
+        { text: "Bootstrap"},
+        { text: "JSON.stringify"},
+        { text: "getElementById"}
+    ],
+    a: "JSON.stringify"
+},
+{
     q: "Which of the following is function-scoped, NOT block-scoped?",
     o: [{ text: "var"},
         { text: "const"},
@@ -91,7 +91,6 @@ var time = 60;
 var counter = 0;
 var timerId;
 var score = 0; 
-$('input[name=initials]').val('');
 
 $('#questions').hide();
 $('#end').hide();
@@ -122,7 +121,7 @@ function timer(){
 //function to show next question
 function showQuestion(){
     console.log(counter);
-    if (counter < 4)
+    if (counter < 7)
     {
     $('#questions').empty();
      var h3 = $('<h3>');
@@ -179,7 +178,6 @@ function end(){
         };
         clearTimeout(timerId);  
         showEnd();
-        saveScore();
 };
 
 //Accept user input for initials, save with score in localStorage, display in for loop on scores page
@@ -193,6 +191,7 @@ $('#submit-btn').click(function () {
     displayScores(data); 
     $('#end').hide();
     $('#scores').show();
+    localStorage.setItem('initials', initials);
 });
 
 const displayScores = function(data) {
