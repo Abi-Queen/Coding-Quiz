@@ -67,8 +67,7 @@ var questions = [
 
 var time = 60;
 var counter = 0;
-var timerId;
-var score = 0; 
+var timerId; 
 
 $('#questions').hide();
 $('#end').hide();
@@ -159,6 +158,7 @@ function end(){
 
 //Accept user input for initials, save with score in localStorage, display in for loop on scores page
 $('#submit-btn').click(function () {
+    localStorage.setItem('initials', initials);
     var data = JSON.parse(localStorage.getItem("data")) || [];
     data.push({
         score: time,
@@ -168,7 +168,6 @@ $('#submit-btn').click(function () {
     displayScores(data); 
     $('#end').hide();
     $('#scores').show();
-    localStorage.setItem('initials', initials);
 });
 
 const displayScores = function(data) {
