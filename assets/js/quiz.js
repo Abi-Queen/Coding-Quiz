@@ -1,28 +1,6 @@
-// Global variables
-
-// HOW to dynamically create the end, start, scores html, and show and hide? ???
-
-//Create an array of questions and options
+//Array of questions and options
 var questions = [
     {
-//     q: "Where is the correct place to insert a JavaScript?",
-//     o: [{ text: "The <head> section"},
-//         { text: "Both the <head> section and the <body> section"},
-//         { text: "The beginning of the <body> section"},
-//         { text: "The end of the <body> section"}
-//     ],
-//     a: "The end of the <body> section"
-// },
-// {
-//     q: "What is the correct syntax for referring to an external script called 'file.js'?",
-//     o: [{ text: "<script href='file.js'>"},
-//         { text: "<script name='file.js'>"},
-//         { text: "<script src='file.js'>"},
-//         { text: "<script al='file.js'>"}
-//     ],
-//     a: "<script src='file.js'>"
-// },
-// {
     q: "How many columns are in a Bootstrap grid row?",
     o: [{ text: "unlimited"},
         { text: "12"},
@@ -95,7 +73,6 @@ var score = 0;
 $('#questions').hide();
 $('#end').hide();
 $('#scores').hide();
-
 $('#scores-list').on('click', function(){
     $('#start').hide();
     $('#end').hide();
@@ -216,5 +193,6 @@ $('.resetBtn').click(function() {
 $('.backBtn').click(function() {
     $('#scores').hide();
     $('#start').show();
+    location.reload();
 });
 
