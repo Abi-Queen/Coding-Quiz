@@ -158,6 +158,7 @@ function end(){
 
 //Accept user input for initials, save with score in localStorage, display in for loop on scores page
 $('#submit-btn').click(function () {
+    var initials = $('input[name=initials]').val();
     localStorage.setItem('initials', initials);
     var data = JSON.parse(localStorage.getItem("data")) || [];
     data.push({
@@ -180,7 +181,10 @@ const displayScores = function(data) {
     }
 };
 
+displayScores();
+
 $('.resetBtn').click(function() {
+    var initials = $('input[name=initials]').val();
     $('.scores-table').val('');
     initials = '';
     score = '';
